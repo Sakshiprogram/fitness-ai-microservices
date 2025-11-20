@@ -14,11 +14,10 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class UserController {
 
-
     private UserService userService;
 
     @GetMapping("/{userId}")
-    public ResponseEntity<UserResponse> getUserProfile(@PathVariable String userId) {
+    public ResponseEntity<UserResponse> getUserProfile(@PathVariable String userId){
         return ResponseEntity.ok(userService.getUserProfile(userId));
     }
 
@@ -27,7 +26,8 @@ public class UserController {
         return ResponseEntity.ok(userService.register(request));
     }
 
-    @GetMapping("{userId}/validate")
+
+    @GetMapping("/{userId}/validate")
     public ResponseEntity<Boolean> validateUser(@PathVariable String userId){
         return ResponseEntity.ok(userService.existByUserId(userId));
     }
